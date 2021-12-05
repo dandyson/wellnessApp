@@ -67,6 +67,11 @@
 							<span id="colon">:</span>
 							<span id="seconds">00</span>
 						</div>
+						<div class="d-flex justify-content-center my-3">
+							<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0">
+								<button class="btn btn-danger btn-block pomodoro-button" id="stop" onclick="timerButtonSound();">Start</button>
+							</div>	
+						</div>
 						<div id="filler">
 							
 						</div>
@@ -79,15 +84,9 @@
 							  var audio = new Audio("http://clipart.usscouts.org/ScoutDoc/SeaExplr/WavFiles/SHIPBELL/CHIME2.WAV");
 							  audio.play();
 							}
-
 							</script>
-
 						</div>
 
-						<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0">
-							<button class="btn btn-danger btn-block pomodoro-button" id="stop" onclick="timerButtonSound();">Start</button>
-						</div>	
-					
 						<div id="buttons" class="d-flex justify-content-center">
 						<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0">
 							<button class="btn btn-primary btn-block pomodoro-button" id="work" onclick="timerButtonSound();">Work</button>
@@ -122,13 +121,15 @@ var pomodoro = {
 	fillerDom : null,
 	
 	init : function(){
+		document.querySelector('.card-body').classList.add('bg-danger');
 		var self = this;
 		this.minutesDom = document.querySelector('#minutes');
 		this.secondsDom = document.querySelector('#seconds');
 		this.fillerDom = document.querySelector('#filler');
 		this.interval = setInterval(function(){
-		self.intervalCallback.apply(self);
+			self.intervalCallback.apply(self);
 		}, 1000);
+		self.startWork.apply(self);
 		
 		document.querySelectorAll('.pomodoro-button').forEach(btn => {
 			btn.addEventListener("click", () => {
@@ -197,15 +198,13 @@ var pomodoro = {
 		this.resetVariables(15, 0, false);
 		this.updateDom();
 	},
-	stopTimer : function(){
-		this.resetVariables(25, 0, false);
-		this.updateDom();
-	},
 	pauseTimer : function(){
 		if (this.started) {
 			document.querySelector('#stop').innerText = "Start";
+			document.querySelector('#stop').classList.contains("button-box-shadow") ? document.querySelector('#stop').classList.remove("button-box-shadow") : '';
 		} else {
 			document.querySelector('#stop').innerText = "Stop";
+			document.querySelector('#stop').classList.add('button-box-shadow');
 		}
 		this.started = ! this.started;
 	},
