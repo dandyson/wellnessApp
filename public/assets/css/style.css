@@ -22378,6 +22378,11 @@ html.fullscreen-button .app-content {
   color: #a3b1c9;
 }
 
+/***** POMODORO TIMER *****/
+#time {
+  font-size: 4rem;
+}
+
 /* ######## LAYOUT-STYLES ######## */
 /* ###### 6.2 Footer  ###### */
 .main-footer {
