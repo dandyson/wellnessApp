@@ -51,64 +51,67 @@
 </div>
 <!-- breadcrumb -->
 
-<div class="row">
+<div class="row d-flex justify-content-center">
 
-	<div class="col-12">
-		<div class="card custom-card">
-			<div class="card-body text-center">
+	<div class="col-8">
 
-				<div id="pomodoro-app">
 
-					<div id="container">
-						<div id="timer">
+		<div>
+			<div>
+				<a class="main-header-arrow" href="" id="ChatBodyHide"><i class="icon ion-md-arrow-back"></i></a>
+				<div class="main-content-body main-content-body-contacts card custom-card">
+					<div id="pomodoro-app">
 
-						<div id="time" class="d-flex justify-content-center align-items-center mb-4">
-							<span id="minutes">25</span>
-							<span id="colon">:</span>
-							<span id="seconds">00</span>
-						</div>
-						<div class="d-flex justify-content-center my-3">
-							<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0">
-								<button class="btn btn-danger btn-block pomodoro-button" id="stop" onclick="timerButtonSound();">Start</button>
-							</div>	
-						</div>
-						<div id="filler">
+						<div id="container">
+							<div id="timer">
+	
+							<div id="time" class="d-flex justify-content-center align-items-center mb-4 bg-danger">
+								<span id="minutes">25</span>:
+								<span id="seconds">00</span>
+							</div>
 							
+							<div id="filler"></div>
+							<div class="d-flex justify-content-center my-3">
+								<div class="">
+									<button class="btn btn-danger btn-block pomodoro-button" id="stop" onclick="timerButtonSound();"><i class="typcn typcn-media-play"></i>/<i class="typcn typcn-media-pause"></i></button>
+								</div>	
+							</div>
+	
+							<script>
+								function timerButtonSound() {
+								  var audio = new Audio("http://orteil.dashnet.org/cookieclicker/snd/press.mp3");
+								  audio.play();
+								}
+								function doneSound() {
+								  var audio = new Audio("http://clipart.usscouts.org/ScoutDoc/SeaExplr/WavFiles/SHIPBELL/CHIME2.WAV");
+								  audio.play();
+								}
+								</script>
+							</div>
+	
+							<div id="buttons" class="d-flex justify-content-evenly my-5">
+							<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0 bg-danger">
+								<button class="btn btn-block pomodoro-button" id="work" onclick="timerButtonSound();">Work</button>
+							</div>	
+							<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0 bg-info">
+								<button class="btn btn-block pomodoro-button" id="shortBreak" onclick="timerButtonSound();">Short Break</button>
+							</div>	
+							<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0 bg-info">
+								<button class="btn btn-block pomodoro-button" id="longBreak" onclick="timerButtonSound();">Long Break</button>
+							</div>	
+	
+							</div>
 						</div>
-						<script>
-							function timerButtonSound() {
-							  var audio = new Audio("http://orteil.dashnet.org/cookieclicker/snd/press.mp3");
-							  audio.play();
-							}
-							function doneSound() {
-							  var audio = new Audio("http://clipart.usscouts.org/ScoutDoc/SeaExplr/WavFiles/SHIPBELL/CHIME2.WAV");
-							  audio.play();
-							}
-							</script>
-						</div>
-
-						<div id="buttons" class="d-flex justify-content-center">
-						<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0">
-							<button class="btn btn-primary btn-block pomodoro-button" id="work" onclick="timerButtonSound();">Work</button>
-						</div>	
-						<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0">
-							<button class="btn btn-success btn-block pomodoro-button" id="shortBreak" onclick="timerButtonSound();">Short Break</button>
-						</div>	
-						<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0">
-							<button class="btn btn-info btn-block pomodoro-button" id="longBreak" onclick="timerButtonSound();">Long Break</button>
-						</div>	
-
-						</div>
+				
 					</div>
-			
 				</div>
-
 			</div>
 		</div>
+
 	</div>
 </div>
 
-			<script>
+<script>
 var pomodoro = {
 	started : false,
 	minutes : 0,
@@ -121,7 +124,8 @@ var pomodoro = {
 	fillerDom : null,
 	
 	init : function(){
-		document.querySelector('.card-body').classList.add('bg-danger');
+		const time = document.querySelector('#time');
+		time.classList.add('bg-danger');
 		var self = this;
 		this.minutesDom = document.querySelector('#minutes');
 		this.secondsDom = document.querySelector('#seconds');
@@ -139,36 +143,32 @@ var pomodoro = {
 		
 		document.querySelector('#work').onclick = function(){
 			// IF card-body has other background classes on, remove and then add success class on
-			if (document.querySelector('.card-body').classList.contains('bg-success')) {
-				document.querySelector('.card-body').classList.remove('bg-success');
+			if (time.classList.contains('bg-info')) {
+				time.classList.remove('bg-info');
 			}
-			if (document.querySelector('.card-body').classList.contains('bg-info')) {
-				document.querySelector('.card-body').classList.remove('bg-info');
-			}
-			document.querySelector('.card-body').classList.add('bg-danger');
+			time.classList.add('bg-danger');
+			time.style.boxShadow = '0 0 0 12px #e7829a';
 			self.startWork.apply(self);
 		};
 		document.querySelector('#shortBreak').onclick = function(){
 			// IF card-body has other background classes on, remove and then add success class on
-			if (document.querySelector('.card-body').classList.contains('bg-info')) {
-				document.querySelector('.card-body').classList.remove('bg-info');
+			if (time.classList.contains('bg-danger')) {
+				time.classList.remove('bg-danger');
 			}
-			if (document.querySelector('.card-body').classList.contains('bg-danger')) {
-				document.querySelector('.card-body').classList.remove('bg-danger');
-			}
-			document.querySelector('.card-body').classList.add('bg-success');
+			time.classList.add('bg-info');
+			time.style.boxShadow = '0 0 0 12px #0095f9';
 			self.startShortBreak.apply(self);
 		};
 		document.querySelector('#longBreak').onclick = function(){
 			// IF card-body has other background classes on, remove and then add success class on
-			if (document.querySelector('.card-body').classList.contains('bg-success')) {
-				document.querySelector('.card-body').classList.remove('bg-success');
+			if (time.classList.contains('bg-danger')) {
+				time.classList.remove('bg-danger');
 			}
-			if (document.querySelector('.card-body').classList.contains('bg-danger')) {
-				document.querySelector('.card-body').classList.remove('bg-danger');
+			if (time.classList.contains('bg-danger')) {
+				time.classList.remove('bg-danger');
 			}
 
-			document.querySelector('.card-body').classList.add('bg-info');
+			time.classList.add('bg-info');
 			self.startLongBreak.apply(self);
 		};
 		document.querySelector('#stop').onclick = function(){
@@ -184,26 +184,21 @@ var pomodoro = {
 		this.fillerWidth = 0;  
 	},
 	startWork: function() {
-		document.querySelector('#stop').innerText = "Start";
 		this.resetVariables(25, 0, false);
 		this.updateDom();
 	},
 	startShortBreak : function(){
-		document.querySelector('#stop').innerText = "Start";
 		this.resetVariables(5, 0, false);
 		this.updateDom();
 	},
 	startLongBreak : function(){
-		document.querySelector('#stop').innerText = "Start";
 		this.resetVariables(15, 0, false);
 		this.updateDom();
 	},
 	pauseTimer : function(){
 		if (this.started) {
-			document.querySelector('#stop').innerText = "Start";
 			document.querySelector('#stop').classList.contains("button-box-shadow") ? document.querySelector('#stop').classList.remove("button-box-shadow") : '';
 		} else {
-			document.querySelector('#stop').innerText = "Stop";
 			document.querySelector('#stop').classList.add('button-box-shadow');
 		}
 		this.started = ! this.started;
