@@ -2,6 +2,12 @@
 
 /***** POMODORO TIMER *****/
 
+#filler {
+    height: 100%;
+    border-radius: 7px 0 0 7px;
+    position: absolute;
+}
+
 #time {
     font-size: 4rem;
     width: 13rem;
@@ -11,6 +17,10 @@
     color: #fff;
     box-shadow: 0 0 0 12px #e7829a;
     transition: color 1s ease;
+}
+
+#timer {
+    position: relative;
 }
 
 #stop,

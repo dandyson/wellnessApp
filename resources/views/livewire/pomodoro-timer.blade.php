@@ -52,16 +52,13 @@
 <!-- breadcrumb -->
 
 <div class="row d-flex justify-content-center">
-
 	<div class="col-8">
-
-
 		<div>
 			<div>
 				<a class="main-header-arrow" href="" id="ChatBodyHide"><i class="icon ion-md-arrow-back"></i></a>
 				<div class="main-content-body main-content-body-contacts card custom-card">
+					<div id="filler" class="bg-success"></div>
 					<div id="pomodoro-app">
-
 						<div id="container">
 							<div id="timer">
 	
@@ -70,10 +67,10 @@
 								<span id="seconds">00</span>
 							</div>
 							
-							<div id="filler"></div>
+
 							<div class="d-flex justify-content-center my-3">
 								<div class="">
-									<button class="btn btn-danger btn-block pomodoro-button" id="stop" onclick="timerButtonSound();"><i class="typcn typcn-media-play"></i>/<i class="typcn typcn-media-pause"></i></button>
+									<button class="btn btn-danger btn-block pomodoro-button" id="stop"><i class="typcn typcn-media-play"></i>/<i class="typcn typcn-media-pause"></i></button>
 								</div>	
 							</div>
 	
@@ -91,13 +88,13 @@
 	
 							<div id="buttons" class="d-flex justify-content-evenly my-5">
 							<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0 bg-danger">
-								<button class="btn btn-block pomodoro-button" id="work" onclick="timerButtonSound();">Work</button>
+								<button class="btn btn-block pomodoro-button pomo-category" id="work" onclick="timerButtonSound();">Work</button>
 							</div>	
 							<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0 bg-info">
-								<button class="btn btn-block pomodoro-button" id="shortBreak" onclick="timerButtonSound();">Short Break</button>
+								<button class="btn btn-block pomodoro-button pomo-category" id="shortBreak" onclick="timerButtonSound();">Short Break</button>
 							</div>	
 							<div class="col-sm-6 col-md-3 mg-t-10 mg-md-t-0 bg-info">
-								<button class="btn btn-block pomodoro-button" id="longBreak" onclick="timerButtonSound();">Long Break</button>
+								<button class="btn btn-block pomodoro-button pomo-category" id="longBreak" onclick="timerButtonSound();">Long Break</button>
 							</div>	
 	
 							</div>
@@ -134,10 +131,18 @@ var pomodoro = {
 			self.intervalCallback.apply(self);
 		}, 1000);
 		self.startWork.apply(self);
+
+		this.fillerDom.style.display = "none";
 		
 		document.querySelectorAll('.pomodoro-button').forEach(btn => {
 			btn.addEventListener("click", () => {
 				timerButtonSound();
+			})
+		});
+
+		document.querySelectorAll('.pomo-category').forEach(btn => {
+			btn.addEventListener("click", () => {
+				this.fillerDom.style.display = "none";
 			})
 		});
 		
@@ -210,6 +215,7 @@ var pomodoro = {
 		return num;
 	},
 	updateDom : function(){
+		this.fillerDom.style.display = "block";
 		this.minutesDom.innerHTML = this.toDoubleDigit(this.minutes);
 		this.secondsDom.innerHTML = this.toDoubleDigit(this.seconds);
 		this.fillerWidth = this.fillerWidth + this.fillerIncrement;
@@ -245,13 +251,6 @@ function playSound() {
   sound.play();
 }
 			</script>
-
-			<style>
-				#filler {
-					background: #22c03c;
-					height: 20px;
-				}
-			</style>
 
 			<!-- /row -->
 
