@@ -12954,8 +12954,9 @@ a.close.disabled {
   z-index: 1030;
 }
 
-@supports (position: sticky) {
+@supports ((position: -webkit-sticky) or (position: sticky)) {
   .sticky-top {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1020;
@@ -22444,6 +22445,7 @@ html.fullscreen-button .app-content {
   }
 }
 .side-header {
+  position: -webkit-sticky;
   position: sticky;
   width: 100%;
   z-index: 10 !important;
@@ -67272,6 +67274,7 @@ button.bg-dark:hover, button.bg-dark:focus {
 }
 
 .position-sticky {
+  position: -webkit-sticky !important;
   position: sticky !important;
 }
 

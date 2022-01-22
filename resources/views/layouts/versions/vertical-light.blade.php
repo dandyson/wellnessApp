@@ -16,7 +16,7 @@
 
     </head>
 
-    <body class="main-body app sidebar-mini">
+    <body class="main-body app sidebar-mini" id="app">
 
         <!-- Loader -->
 		<div id="global-loader">
