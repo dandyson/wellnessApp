@@ -13,6 +13,8 @@
 		<title> Valex – Laravel Admin & Dashboard Template </title>
 
         @include('layouts.vertical.styles')
+        {{-- Tailwind CSS (For Livewire Datatables) --}}
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
     </head>
 
