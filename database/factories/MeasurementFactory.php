@@ -22,8 +22,11 @@ class MeasurementFactory extends Factory
     public function definition()
     {
         return [
-            'title' => 'Test',
-            'slug' => 'test',
+            'date' => $this->faker->date(), 
+            'waist' => '47', 
+            'chest' => '44', 
+            'left-arm' => '23', 
+            'right-arm' => '24'
          ];
     }
 }

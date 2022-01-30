@@ -15,8 +15,11 @@ class CreateMeasurementsTable extends Migration
     {
         Schema::create('measurements', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug');
+            $table->date('date');
+            $table->string('waist');
+            $table->string('chest');
+            $table->string('left-arm');
+            $table->string('right-arm');
             $table->timestamps();
         });
     }

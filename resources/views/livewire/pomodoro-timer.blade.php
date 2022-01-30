@@ -109,6 +109,7 @@
 </div>
 
 <script>
+	// TODO: Need to put this in a JS file, but even puttng it in App.js doesn't work?
 var pomodoro = {
 	started : false,
 	minutes : 0,
@@ -250,7 +251,7 @@ function playSound() {
   var sound = document.getElementById("audio");
   sound.play();
 }
-			</script>
+</script>
 
 			<!-- /row -->
 

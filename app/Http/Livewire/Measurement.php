@@ -18,6 +18,31 @@ class Measurement extends Component
     {
         $measurements = ModelsMeasurement::get();
         return response()->json($measurements);
-         
+    }
+
+    public function create()
+    {
+        return view('livewire.measurements');
+    }
+
+    public function store(Request $request): JsonResponse 
+    {
+        $request->validate([
+            'date' => 'required',
+            'waist' => 'numeric',
+            'chest' => 'numeric',
+            'leftArm' => 'numeric',
+            'rightArm' => 'numeric'
+        ]);
+
+        ModelsMeasurement::create([
+            'date' => $request->date,
+            'waist' => $request->waist,
+            'chest' => $request->chest,
+            'left-arm' => $request->leftArm,
+            'right-arm' => $request->rightArm
+        ]);
+
+        return response()->json(['success' => 'Success', 'Request data' => $request->all()]);
     }
 }

@@ -15,14 +15,21 @@ class MeasurementTable extends LivewireDatatable
     public function columns()
     {
         return [
-            Column::name('title')
-                ->label('Title'),
+            DateColumn::name('date')
+                ->label('Date'),
 
-            Column::name('slug')
-                ->label('Slug'),
+            Column::name('waist')
+                ->label('Waist'),
 
-            DateColumn::name('created_at')
-                ->label('Created at')
+            Column::name('chest')
+            ->label('Chest'),
+
+            Column::name('left-arm')
+            ->label('Left Arm'),
+
+            Column::name('right-arm')
+            ->label('Right Arm'),
+
         ];
     }
 }
