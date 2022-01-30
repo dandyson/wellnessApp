@@ -54,12 +54,7 @@
 					</div>
 				</div>
 				<!-- breadcrumb -->
-
-				<div class="col-sm-6 col-md-4 col-xl-3 mg-t-20 mg-md-t-0">
-					<a class="modal-effect btn btn-outline-primary btn-block"
-						data-bs-effect="effect-slide-in-bottom" data-bs-toggle="modal"
-						href="#measurement-table"><i class="typcn typcn-plus"></i> Add New Measurement</a>
-				</div>
+				<h2 class="mb-4">Body Measurements</h2>
 	
 
             <!-- Modal effects -->
@@ -106,8 +101,6 @@
 										</form>
 									</div>
 							
-
-
 							</div>
 							<div class="modal-footer">
 								<button class="btn ripple btn-primary" id="add-measurement-submit" type="button">Add Measurement</button>
@@ -121,10 +114,28 @@
 
 				{{-- MEASUREMENTS DATATABLE --}}
                 <!-- row -->
-                <div class="row">
-					<div class="container mx-auto col-12 col-sm-9">
-							<livewire:measurement-table/>
-						</div>
+                <div class="p-4 main-content-body main-content-body-contacts card custom-card">
+					<div class="col-sm-6 col-md-4 col-xl-3 mg-t-20 mg-md-t-0">
+						<a class="modal-effect btn btn-outline-primary btn-block"
+							data-bs-effect="effect-slide-in-bottom" data-bs-toggle="modal"
+							href="#measurement-table"><i class="typcn typcn-plus"></i> Add New Measurement</a>
+					</div>
+					<div class="container mt-5">
+						<table class="table table-bordered yajra-datatable">
+							<thead>
+								<tr>
+									<th>Date</th>
+									<th>Waist</th>
+									<th>Chest</th>
+									<th>Left Arm</th>
+									<th>Right Arm</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
 					</div>
                 </div>
                 <!-- /row -->
@@ -149,5 +160,6 @@
 		<!-- Sweet-alert js  -->
 		<script src="{{asset('assets/plugins/sweet-alert/sweetalert.min.js')}}"></script>
 		<script src="{{asset('assets/js/sweet-alert.js')}}"></script>
+
 
 @endsection

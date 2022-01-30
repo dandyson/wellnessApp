@@ -6,6 +6,7 @@ use App\Models\Measurement as ModelsMeasurement;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Livewire\Component;
+use DataTables;
 
 class Measurement extends Component
 {
@@ -16,8 +17,17 @@ class Measurement extends Component
 
     public function index(Request $request): JsonResponse
     {
-        $measurements = ModelsMeasurement::get();
-        return response()->json($measurements);
+        if ($request->ajax()) {
+            $data = ModelsMeasurement::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
     }
 
     public function create()

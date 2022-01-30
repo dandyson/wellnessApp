@@ -389,6 +389,27 @@ $(function() {
 
 	//**** ADD A NEW MEASUREMENT ****// 
 
+	// Datatable for measurements
+
+	var table = $('.yajra-datatable').DataTable({
+		processing: true,
+		serverSide: true,
+		ajax: "/api/measurement",
+		columns: [
+			{data: 'date', name: 'date'},
+			{data: 'waist', name: 'waist'},
+			{data: 'chest', name: 'chest'},
+			{data: 'left-arm', name: 'left-arm'},
+			{data: 'right-arm', name: 'right-arm'},
+			{
+				data: 'action', 
+				name: 'action', 
+				orderable: true, 
+				searchable: true
+			},
+		]
+	});
+
 	let submit = document.querySelector("#add-measurement-submit");
 
 	// FORM FIELDS

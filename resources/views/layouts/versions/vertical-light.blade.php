@@ -13,8 +13,9 @@
 		<title> Valex – Laravel Admin & Dashboard Template </title>
 
         @include('layouts.vertical.styles')
-        {{-- Tailwind CSS (For Livewire Datatables) --}}
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        
+        {{-- DATATABLES - CSS --}}
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 
     </head>
 
@@ -58,6 +59,9 @@
         </div>
 
         @include('layouts.vertical.scripts')
+
+        {{-- DATATABLES - SCRIPT --}}
+        <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
 
     </body>
 </html>
