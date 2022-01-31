@@ -2691,7 +2691,8 @@ $(function () {
   var inputWaist = document.querySelector("#inputWaist");
   var inputChest = document.querySelector("#inputChest");
   var inputLeftArm = document.querySelector("#inputLeftArm");
-  var inputRightArm = document.querySelector("#inputRightArm");
+  var inputRightArm = document.querySelector("#inputRightArm"); // Submit form with data on click
+
   submit.addEventListener("click", function () {
     var newMeasurement = {
       date: inputDate.value,
@@ -2702,15 +2703,17 @@ $(function () {
     };
     axios.post('/api/measurement', newMeasurement).then(function (response) {
       if (response.data.success) {
-        $("#measurement-table").modal('hide');
+        // Hide the 'Add Measurement' modal
+        $("#measurement-table").modal('hide'); // Show success sweeatalert
+
         swal({
           title: response.data.success,
           text: 'New Measurement Entry Added!',
           type: 'success',
           confirmButtonColor: '#57a94f'
-        });
-        console.log($("#measurement-table").ajax);
-        $("#measurement-table").ajax.reload();
+        }); // Refresh the Measurements table
+
+        table.ajax.reload();
       }
     })["catch"](function (error) {
       console.log(error);

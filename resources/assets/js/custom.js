@@ -390,7 +390,6 @@ $(function() {
 	//**** ADD A NEW MEASUREMENT ****// 
 
 	// Datatable for measurements
-
 	var table = $('.yajra-datatable').DataTable({
 		processing: true,
 		serverSide: true,
@@ -419,6 +418,7 @@ $(function() {
 	let inputLeftArm = document.querySelector("#inputLeftArm");
 	let inputRightArm = document.querySelector("#inputRightArm");
 
+	// Submit form with data on click
 	submit.addEventListener("click", () => {
 		let newMeasurement = {
 			date: inputDate.value,
@@ -430,7 +430,9 @@ $(function() {
 
 		axios.post('/api/measurement', newMeasurement).then((response) => {
 			if (response.data.success) {
+				// Hide the 'Add Measurement' modal
 				$("#measurement-table").modal('hide');
+				// Show success sweeatalert
 				swal(
 					{
 						title: response.data.success,
@@ -439,8 +441,8 @@ $(function() {
 						confirmButtonColor: '#57a94f'
 					}
 				)
-				console.log($("#measurement-table").ajax);
-				$("#measurement-table").ajax.reload();
+				// Refresh the Measurements table
+				table.ajax.reload();
 				
 			}
 		}).catch((error) => {
