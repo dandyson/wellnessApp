@@ -10452,3 +10452,13 @@ table.dataTable {
         }
       }
     }
+
+// DATATABLES - Action column styles
+.action-buttons {
+  display: flex;
+  justify-content: space-evenly;
+
+  a {
+    font-size: 0.9rem;
+  }
+}

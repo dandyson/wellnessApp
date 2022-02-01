@@ -2663,6 +2663,10 @@ $(function () {
     processing: true,
     serverSide: true,
     ajax: "/api/measurement",
+    columnDefs: [{
+      className: "action-buttons",
+      "targets": [5]
+    }],
     columns: [{
       data: 'date',
       name: 'date'

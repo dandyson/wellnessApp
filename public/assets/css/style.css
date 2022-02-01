@@ -21614,6 +21614,14 @@ table.dataTable {
     font-size: 12px;
   }
 }
+.action-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+.action-buttons a {
+  font-size: 0.9rem;
+}
+
 /*-----IE issues-----*/
 *::-ms-backdrop,
 .main-header-center {

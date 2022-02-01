@@ -22,7 +22,7 @@ class Measurement extends Component
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    $actionBtn = '<a href="/" class="edit btn btn-success btn-sm measurement-edit">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm measurement-delete">Delete</a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
@@ -54,5 +54,10 @@ class Measurement extends Component
         ]);
 
         return response()->json(['success' => 'Success', 'Request data' => $request->all()]);
+    }
+
+    public function edit()
+    {
+        return view('livewire.measurement-edit');
     }
 }
