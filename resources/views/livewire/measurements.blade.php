@@ -55,9 +55,8 @@
 				</div>
 				<!-- breadcrumb -->
 				<h2 class="mb-4">Body Measurements</h2>
-	
 
-            <!-- Modal effects -->
+            <!-- Measurements Table -->
             <div class="modal fade" id="measurement-table">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content modal-content-demo">
@@ -124,6 +123,7 @@
 						<table class="table table-bordered yajra-datatable">
 							<thead>
 								<tr>
+									<th>ID</th>
 									<th>Date</th>
 									<th>Waist</th>
 									<th>Chest</th>

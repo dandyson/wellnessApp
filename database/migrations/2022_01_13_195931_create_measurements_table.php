@@ -18,8 +18,8 @@ class CreateMeasurementsTable extends Migration
             $table->date('date');
             $table->string('waist');
             $table->string('chest');
-            $table->string('left-arm');
-            $table->string('right-arm');
+            $table->string('left_arm');
+            $table->string('right_arm');
             $table->timestamps();
         });
     }

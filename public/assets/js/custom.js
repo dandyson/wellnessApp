@@ -2294,6 +2294,9 @@ var __webpack_exports__ = {};
   \***************************************/
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    axios = _require["default"];
+
 $(function () {
   'use strict'; // ______________LOADER
 
@@ -2660,6 +2663,17 @@ $(function () {
   // Datatable for measurements
 
   var table = $('.yajra-datatable').DataTable({
+    "drawCallback": function drawCallback(settings) {
+      var editMeasurementButtons = document.querySelectorAll('.measurement-edit');
+      editMeasurementButtons.forEach(function (button) {
+        console.log(button);
+        button.addEventListener('click', function (e) {
+          // Get the value of the ID of the row
+          var measurementID = Number(e.target.parentElement.parentElement.firstChild.firstChild.data);
+          window.location.assign('api/measurement/' + measurementID + '/edit');
+        });
+      });
+    },
     processing: true,
     serverSide: true,
     ajax: "/api/measurement",
@@ -2668,6 +2682,9 @@ $(function () {
       "targets": [5]
     }],
     columns: [{
+      data: 'id',
+      name: 'id'
+    }, {
       data: 'date',
       name: 'date'
     }, {
@@ -2677,11 +2694,11 @@ $(function () {
       data: 'chest',
       name: 'chest'
     }, {
-      data: 'left-arm',
-      name: 'left-arm'
+      data: 'left_arm',
+      name: 'left_arm'
     }, {
-      data: 'right-arm',
-      name: 'right-arm'
+      data: 'right_arm',
+      name: 'right_arm'
     }, {
       data: 'action',
       name: 'action',

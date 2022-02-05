@@ -25,8 +25,8 @@ class MeasurementFactory extends Factory
             'date' => $this->faker->date(), 
             'waist' => '47', 
             'chest' => '44', 
-            'left-arm' => '23', 
-            'right-arm' => '24'
+            'left_arm' => '23', 
+            'right_arm' => '24'
          ];
     }
 }

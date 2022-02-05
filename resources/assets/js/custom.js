@@ -1,3 +1,5 @@
+const { default: axios } = require('axios');
+
 $(function() {
 
 	'use strict'
@@ -391,6 +393,18 @@ $(function() {
 
 	// Datatable for measurements
 	var table = $('.yajra-datatable').DataTable({
+		"drawCallback": function( settings ) {
+			var editMeasurementButtons = document.querySelectorAll('.measurement-edit');
+			editMeasurementButtons.forEach(button => {
+			  console.log(button);
+			  button.addEventListener('click', (e) => {
+				// Get the value of the ID of the row
+				let measurementID = Number(e.target.parentElement.parentElement.firstChild.firstChild.data);
+				
+				window.location.assign('api/measurement/' + measurementID + '/edit');
+			  })
+			})
+		},
 		processing: true,
 		serverSide: true,
 		ajax: "/api/measurement",
@@ -398,11 +412,12 @@ $(function() {
 			{ className: "action-buttons", "targets": [ 5 ] }
 		],
 		columns: [
+			{data: 'id', name: 'id'},
 			{data: 'date', name: 'date'},
 			{data: 'waist', name: 'waist'},
 			{data: 'chest', name: 'chest'},
-			{data: 'left-arm', name: 'left-arm'},
-			{data: 'right-arm', name: 'right-arm'},
+			{data: 'left_arm', name: 'left_arm'},
+			{data: 'right_arm', name: 'right_arm'},
 			{
 				data: 'action', 
 				name: 'action', 
@@ -420,6 +435,7 @@ $(function() {
 	let inputChest = document.querySelector("#inputChest");
 	let inputLeftArm = document.querySelector("#inputLeftArm");
 	let inputRightArm = document.querySelector("#inputRightArm");
+
 
 	// Submit form with data on click
 	submit.addEventListener("click", () => {

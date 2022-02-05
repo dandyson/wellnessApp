@@ -12,6 +12,7 @@ class Measurement extends Component
 {
     public function render()
     {
+        $this->measurements = ModelsMeasurement::all();
         return view('livewire.measurements');
     }
 
@@ -22,7 +23,7 @@ class Measurement extends Component
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $actionBtn = '<a href="/" class="edit btn btn-success btn-sm measurement-edit">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm measurement-delete">Delete</a>';
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm measurement-edit">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm measurement-delete">Delete</a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
@@ -35,7 +36,28 @@ class Measurement extends Component
         return view('livewire.measurements');
     }
 
-    public function store(Request $request): JsonResponse 
+    public function show(Request $request, ModelsMeasurement $measurement)
+    {
+        $validated = $request->validate([
+            'date' => 'required',
+            'waist' => 'numeric',
+            'chest' => 'numeric',
+            'leftArm' => 'numeric',
+            'rightArm' => 'numeric'
+        ]);
+
+        $measurement->update([
+            'date' => $request->get('date'),
+            'waist' => $request->get('waist'),
+            'chest' => $request->get('chest'),
+            'leftArm' => $request->get('left_arm'),
+            'rightArm' => $request->get('right_arm'),
+        ]);
+
+        return response()->json(['success' => 'Update successful!']);
+    }
+
+    public function store(): JsonResponse 
     {
         $request->validate([
             'date' => 'required',
@@ -45,19 +67,20 @@ class Measurement extends Component
             'rightArm' => 'numeric'
         ]);
 
-        ModelsMeasurement::create([
+        ModelsMeasurement::updateOrCreate(['id' => $this->id], [
             'date' => $request->date,
             'waist' => $request->waist,
             'chest' => $request->chest,
-            'left-arm' => $request->leftArm,
-            'right-arm' => $request->rightArm
+            'left_arm' => $request->leftArm,
+            'right_arm' => $request->rightArm
         ]);
 
         return response()->json(['success' => 'Success', 'Request data' => $request->all()]);
     }
 
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('livewire.measurement-edit');
+        $measurements = ModelsMeasurement::all();
+        return view('livewire.measurement-edit')->with('measurements', $measurements);
     }
 }

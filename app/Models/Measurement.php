@@ -10,7 +10,7 @@ class Measurement extends Model
     use HasFactory;
 
     protected $fillable = [
-        'date', 'waist', 'chest', 'left-arm', 'right-arm'
+        'date', 'waist', 'chest', 'left_arm', 'right_arm'
     ];
 }
 
