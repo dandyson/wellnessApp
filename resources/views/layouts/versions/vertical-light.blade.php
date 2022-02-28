@@ -13,6 +13,8 @@
 		<title> Valex – Laravel Admin & Dashboard Template </title>
 
         @include('layouts.vertical.styles')
+
+        @livewireStyles
         
         {{-- DATATABLES - CSS --}}
         <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -62,6 +64,14 @@
 
         {{-- DATATABLES - SCRIPT --}}
         <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+
+        <script>
+            $(window).on('measurementAdded', () => {
+                $('.exampleModal').modal('hide');
+            })
+        </script>
+
+        @livewireScripts
 
     </body>
 </html>
