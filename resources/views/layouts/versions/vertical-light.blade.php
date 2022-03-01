@@ -65,12 +65,6 @@
         {{-- DATATABLES - SCRIPT --}}
         <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
 
-        <script>
-            $(window).on('measurementAdded', () => {
-                $('.exampleModal').modal('hide');
-            })
-        </script>
-
         @livewireScripts
 
     </body>
