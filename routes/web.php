@@ -110,6 +110,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('livewire.index');
 });
+Route::get('/measurements', function () {
+    return view('measurements');
+});
 Route::get('accordion', Accordion::class);
 Route::get('alerts', Alerts::class);
 Route::get('avatar', Avatar::class);
