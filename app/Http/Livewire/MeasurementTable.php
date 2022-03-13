@@ -17,13 +17,18 @@ class MeasurementTable extends Component
         return view('livewire.measurement-table');
     }
 
+    public function switch() 
+    {
+        $this->updateMode = false;
+    }
+
     private function resetInput()
     {
-        $this->date = null;
-        $this->chest = null;
-        $this->waist = null;
-        $this->left_arm = null;
-        $this->right_arm = null;
+        $this->date = '';
+        $this->chest = '';
+        $this->waist = '';
+        $this->left_arm = '';
+        $this->right_arm = '';
     }
 
     public function store()

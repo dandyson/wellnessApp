@@ -1,36 +1,35 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Update Contact</h3>
-    </div>
-
-    <div class="panel-body">
-        <div class="form-inline">
-            <input type="hidden" wire:model="selected_id">
-            <div class="input-group">
-                Date
-                <input wire:model="date" type="date" class="form-control input-sm">
-            </div>
-            <div class="input-group">
-                Chest
-                <input wire:model="chest" type="number" class="form-control input-sm">
-            </div>
-            <div class="input-group">
-                Waist
-                <input wire:model="waist" type="number" class="form-control input-sm">
-            </div>
-            <div class="input-group">
-                Left Arm
-                <input wire:model="left_arm" type="number" class="form-control input-sm">
-            </div>
-            <div class="input-group">
-                Right Arm
-                <input wire:model="right_arm" type="number" class="form-control input-sm">
-            </div>
-            <div class="input-group">
-                <br>
-                <button wire:click="update()" class="btn btn-default">Update</button>
+<div class="card">
+    <div class="card-body">
+        <div class="col-md-12 my-2 d-flex flex-row justify-content-between align-items-center">
+            <h3 class="m-0">Update Measurement</h3><button wire:click="switch()" class="btn btn-main-primary">Switch to Add New</button>
+        </div>
+       
+        <div class="pd-30 pd-sm-40 bg-gray-200">
+            <div class="row row-xs d-flex justify-content-start">
+                <div class="col-md-12 my-2">
+                    Date
+                    <input wire:model="date" type="date" class="form-control input-sm">
+                </div>
+                <div class="col-md-6 my-2">
+                    Chest
+                    <input wire:model="chest" type="text" class="form-control input-sm">
+                </div>
+                <div class="col-md-6 my-2">
+                    Waist
+                    <input wire:model="waist" type="text" class="form-control input-sm">
+                </div>
+                <div class="col-md-6 my-2">
+                    Left Arm
+                    <input wire:model="left_arm" type="text" class="form-control input-sm">
+                </div>
+                <div class="col-md-6 my-2">
+                    Right Arm
+                    <input wire:model="right_arm" type="text" class="form-control input-sm">
+                </div>
+                <div class="col-md-3 mt-3">
+                    <button class="btn btn-main-primary btn-block" wire:click="update()">Update</button>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
