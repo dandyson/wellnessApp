@@ -107,12 +107,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('livewire.index');
-});
-Route::get('/measurements', function () {
-    return view('measurements');
-});
 Route::get('accordion', Accordion::class);
 Route::get('alerts', Alerts::class);
 Route::get('avatar', Avatar::class);
@@ -207,3 +201,14 @@ Route::get('widgets', Widgets::class);
 Route::get('width', Width::class);
 Route::get('error500', Error500::class);
 Route::get('error404', Error404::class);
+
+// CUSTOM ROUTES
+
+Route::get('/', function () {
+    return view('livewire.index');
+});
+Route::get('/measurements', function () {
+    return view('measurements');
+});
+
+// END OF CUSTOM ROUTES

@@ -8,25 +8,91 @@ use Livewire\Component;
 
 class MeasurementTable extends Component
 {
+    public $data, $date, $chest, $waist, $left_arm, $right_arm, $selected_id;
+    public $updateMode = false;
 
-    public $count = 0;
- 
-    public function store(Request $request)
+    public function render()
     {
-        $validated = $request->validate([
-            'date' => 'required',
+        $this->data = Measurement::all();
+        return view('livewire.measurement-table');
+    }
+
+    private function resetInput()
+    {
+        $this->date = null;
+        $this->chest = null;
+        $this->waist = null;
+        $this->left_arm = null;
+        $this->right_arm = null;
+    }
+
+    public function store()
+    {
+        $this->validate([
+            'date' => 'required|date',
             'chest' => 'required',
-            'height' => 'required',
+            'waist' => 'required',
             'left_arm' => 'required',
             'right_arm' => 'required',
         ]);
 
-        Measurement::create($validated);
+        Measurement::create([
+            'date' => $this->date,
+            'chest' => $this->chest,
+            'waist' => $this->waist,
+            'left_arm' => $this->left_arm,
+            'right_arm' => $this->right_arm,
+        ]);
+
+        $this->resetInput();
     }
 
-    public function render()
+    public function edit($id)
     {
-        $measurements = Measurement::all();
-        return view('livewire.measurement-table', compact('measurements'));
+        $record = Measurement::findOrFail($id);
+
+        $this->selected_id = $id;
+        $this->date = $record->date;
+        $this->chest = $record->chest;
+        $this->waist = $record->waist;
+        $this->left_arm = $record->left_arm;
+        $this->right_arm = $record->right_arm;
+
+        $this->updateMode = true;
+    }
+
+    public function update()
+    {
+        $this->validate([
+            'selected_id' => 'required|numeric',
+            'date' => 'required|date',
+            'chest' => 'required',
+            'waist' => 'required',
+            'left_arm' => 'required',
+            'right_arm' => 'required',
+        ]);
+
+        if ($this->selected_id) {
+            $record = Measurement::find($this->selected_id);
+            $record->update([
+                'date' => $this->date,
+                'chest' => $this->chest,
+                'waist' => $this->waist,
+                'left_arm' => $this->left_arm,
+                'right_arm' => $this->right_arm,
+            ]);
+
+            $this->resetInput();
+            $this->updateMode = false;
+        }
+
+    }
+
+    public function destroy($id)
+    {
+        if ($id) {
+            $record = Measurement::where('id', $id);
+            $record->delete();
+        }
     }
 }
