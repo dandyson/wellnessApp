@@ -1,3 +1,15 @@
+<div>
+<!-- Include modal -->
+@include('components/add-measurement')
+	
+<!-- Button trigger modal -->
+<div class="col-sm-6 col-md-4 col-xl-3 mg-t-20 mg-sm-t-0">
+	<a class="modal-effect btn btn-outline-primary btn-block"
+		data-bs-effect="effect-slide-in-right" data-bs-toggle="modal"
+		data-bs-target="#add-measurement">Slide In Right
+	</a>
+</div>
+
 <table id="example" class="table key-buttons text-md-nowrap dataTable no-footer dtr-inline"
     aria-describedby="example_info" style="width: 782px;">
     <thead>
@@ -30,3 +42,4 @@
         @endforeach
     </tbody>
 </table>
+</div>
