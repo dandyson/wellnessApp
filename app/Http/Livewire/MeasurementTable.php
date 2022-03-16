@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Measurement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class MeasurementTable extends Component
@@ -49,6 +50,8 @@ class MeasurementTable extends Component
             'right_arm' => $this->right_arm,
         ]);
 
+        session()->flash('message', 'Measurement Successfully Added!');
+
         $this->resetInput();
     }
 
@@ -87,6 +90,8 @@ class MeasurementTable extends Component
                 'right_arm' => $this->right_arm,
             ]);
 
+            session()->flash('message', 'Measurement Successfully Updated!');
+
             $this->resetInput();
             $this->updateMode = false;
         }
@@ -98,6 +103,7 @@ class MeasurementTable extends Component
         if ($id) {
             $record = Measurement::where('id', $id);
             $record->delete();
+            session()->flash('message', 'Measurement Successfully Deleted!');
         }
     }
 }

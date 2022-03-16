@@ -1,7 +1,7 @@
 <div>
     @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <div class="alert alert-danger alert-dismissible measurement-alert">
+            <a href="#" class="close measurement-error-close" data-dismiss="alert">&times;</a>
             <strong>Sorry!</strong> invalid input.<br><br>
             <ul style="list-style-type:none;">
                 @foreach ($errors->all() as $error)
@@ -10,6 +10,17 @@
             </ul>
         </div>
     @endif
+
+    <div>
+        @if (session()->has('message'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                {{ session('message') }}
+                <button type="button" class="close measurement-success-close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+    </div>
 
     @if ($updateMode)
         @include('livewire.update-measurement')
