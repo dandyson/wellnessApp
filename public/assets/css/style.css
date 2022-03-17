@@ -22428,6 +22428,11 @@ html.fullscreen-button .app-content {
   box-shadow: #ebebeb 0px 6px 0px;
 }
 
+/*** MEASUREMENTS DATATABLE ***/
+#measurement-table td {
+  padding: 8px 16px 8px 16px;
+}
+
 /* ######## LAYOUT-STYLES ######## */
 /* ###### 6.2 Footer  ###### */
 .main-footer {

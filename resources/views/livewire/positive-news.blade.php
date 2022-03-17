@@ -49,9 +49,27 @@
 
 <!-- row opened-->
 <div class="row">
-    <livewire:measurement-table />
+    <div class="row row-sm">
+        <div class="col-md-4 col-lg-4">
+            <div class="card">
+                <img alt="Image" class="img-fluid card-img-top" src="//localhost:3000/assets/img/photos/14.jpg">
+                <div class="card-body ">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div><!-- col-4 -->
+        <div class="col-md-4 col-lg-4 mg-md-t-0">
+            <div class="card">
+                <img alt="Image" class="img-fluid card-img-top" src="//localhost:3000/assets/img/photos/12.jpg">
+                <div class="card-body ">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div><!-- col-4 -->
+    </div>
 </div>
 <!-- row closed -->
 
 @endsection('content')
 
+</div>

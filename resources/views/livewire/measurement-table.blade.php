@@ -28,7 +28,7 @@
         @include('livewire.add-measurement')
     @endif
 
-    <table id="example" class="table key-buttons text-md-nowrap dataTable no-footer dtr-inline"
+    <table id="measurement-table" class="table key-buttons text-md-nowrap dataTable no-footer dtr-inline"
         aria-describedby="example_info" style="width: 782px;">
         <thead>
             <tr>
