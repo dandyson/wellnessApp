@@ -21622,6 +21622,10 @@ table.dataTable {
   font-size: 0.9rem;
 }
 
+.news-headline {
+  width: 90%;
+}
+
 /*-----IE issues-----*/
 *::-ms-backdrop,
 .main-header-center {

@@ -95,7 +95,9 @@ use App\Http\Livewire\Userlist;
 use App\Http\Livewire\WidgetNotification;
 use App\Http\Livewire\Widgets;
 use App\Http\Livewire\Width;
+use App\Http\Livewire\WorryJournal;
 use Illuminate\Support\Facades\Route;
+use Weidner\Goutte\GoutteFacade;
 
 /*
 |--------------------------------------------------------------------------
@@ -201,6 +203,7 @@ Route::get('userlist', Userlist::class);
 Route::get('widget-notification', WidgetNotification::class);
 Route::get('widgets', Widgets::class);
 Route::get('width', Width::class);
+Route::get('worry-journal', WorryJournal::class);
 Route::get('error500', Error500::class);
 Route::get('error404', Error404::class);
 
@@ -209,6 +212,7 @@ Route::get('error404', Error404::class);
 Route::get('/', function () {
     return view('livewire.index');
 });
+
 Route::get('/measurements', function () {
     return view('measurements');
 });

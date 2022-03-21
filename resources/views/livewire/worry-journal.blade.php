@@ -41,28 +41,11 @@
         </div>
     </div>
     <!-- breadcrumb -->
-    <h1>Positive.News</h1>
-    <!-- row opened-->
+    <h1>Worry Journal</h1>
     <div class="row">
-        <div class="row row-sm">
-            @foreach ($jsonData['positive-news'] as $item)
-                <div class="col-md-4 col-lg-4">
-                    <div class="card">
-                        <a target="_blank" href="{{ $item['link'] }}">
-                            <img alt="Image" class="img-fluid card-img-top" src="{{ $item['image'] }}">
-                        </a>
-                        <div class="card-body ">
-                            <a target="_blank" href="{{ $item['link'] }}">
-                                <h3 class="card-title news-headline">{{ $item['title'] }}</h3>
-                            </a>
-                            <p class="card-text">{{ $item['description'] }}</p>
-                        </div>
-                    </div>
-                </div><!-- col-4 -->
-            @endforeach
-        </div>
+        <livewire:worry-journal-wizard />
     </div>
-    <!-- row closed -->
+
 
     {{-- <h1>Good News Network</h1>
 <!-- row opened-->
@@ -83,6 +66,6 @@
     </div>
 </div> --}}
     <!-- row closed -->
+</div>
 @endsection('content')
 
-</div>
